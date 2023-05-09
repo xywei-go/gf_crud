@@ -18,4 +18,7 @@ Project Makefile Commands:
 4. 对员工进行增删查改
 5. 通过员工查询也带出部门
 6. 数据库使用MySQL
+7. 部门员工统计使用Redis缓存
+8. 新增员工，新增部门，修改员工部门后，使用RabbitMQ或者Kafka进行缓存更新
+9. 
 
