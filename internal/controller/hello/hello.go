@@ -8,13 +8,13 @@ import (
 	v1 "gf_crud/api/hello/v1"
 )
 
-type Controller struct{}
+type HelloController struct{}
 
-func New() *Controller {
-	return &Controller{}
+func New() *HelloController {
+	return &HelloController{}
 }
 
-func (c *Controller) Hello(ctx context.Context, req *v1.Req) (res *v1.Res, err error) {
+func (c *HelloController) Hello(ctx context.Context, req *v1.Req) (res *v1.Res, err error) {
 	g.RequestFromCtx(ctx).Response.Writeln("Hello World!")
 	return
 }
