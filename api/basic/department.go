@@ -1,4 +1,4 @@
-package v1
+package basic
 
 import (
 	"gf_crud/internal/model/entity"
