@@ -32,3 +32,16 @@ func (c *departmentController) Test(ctx context.Context, req *basic.DepartmentRe
 	fmt.Println("controller---", &res)
 	return
 }
+
+// 执行插入部门数据
+func (c *departmentController) CreateDepartment(ctx context.Context, req *basic.DepartmentCreateReq) (res *basic.DepartmentCreateRes, err error) {
+	in := &model.DepartmentInput {
+		DepartmentName: req.DepartmentName,
+	}
+	result, err2 := service.Department().CreateDepartment(ctx, *in)
+	res = &basic.DepartmentCreateRes{
+		Result: result,
+	}
+	fmt.Println(err2)
+	return 
+}

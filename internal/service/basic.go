@@ -13,6 +13,7 @@ import (
 type (
 	IDepartment interface {
 		Test(ctx context.Context, input model.DepartmentInput) (output *model.DepartmentOutput, err error)
+		CreateDepartment(ctx context.Context, in model.DepartmentInput) (flag bool, err error)
 	}
 )
 
