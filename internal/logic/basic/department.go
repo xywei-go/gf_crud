@@ -32,13 +32,11 @@ func (s *sDepartment) Test(ctx context.Context, input model.DepartmentInput) (ou
 
 func (s *sDepartment) CreateDepartment(ctx context.Context, in model.DepartmentInput) (flag bool, err error) {
 	var result sql.Result
-	result, err = dao.Department.Ctx(ctx).Data(do.Department{
+	result, _ = dao.Department.Ctx(ctx).Data(do.Department{
+		Id:             in.Id,
 		DepartmentName: in.DepartmentName,
-	}).Distinct().Insert()
-	fmt.Println("error: ", err)
-	count, err := result.RowsAffected()
-	fmt.Println("result count: ", count)
-	fmt.Println("error: ", err)
+	}).OnDuplicate("department_name").Save()
+	count, _ := result.RowsAffected()
 	flag = (count != 0)
 	return flag, nil
 }
