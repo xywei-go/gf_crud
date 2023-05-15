@@ -5,5 +5,5 @@
 package logic
 
 import (
-	_ "gf_crud/internal/logic/basic"
+	_ "gf_crud/internal/logic/department"
 )

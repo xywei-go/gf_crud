@@ -35,7 +35,7 @@ func (c *departmentController) Test(ctx context.Context, req *basic.DepartmentRe
 
 // 执行插入部门数据
 func (c *departmentController) CreateDepartment(ctx context.Context, req *basic.DepartmentCreateReq) (res *basic.DepartmentCreateRes, err error) {
-	in := &model.DepartmentInput {
+	in := &model.DepartmentInput{
 		DepartmentName: req.DepartmentName,
 	}
 	result, err2 := service.Department().CreateDepartment(ctx, *in)
@@ -43,5 +43,19 @@ func (c *departmentController) CreateDepartment(ctx context.Context, req *basic.
 		Result: result,
 	}
 	fmt.Println(err2)
-	return 
+	return
+}
+
+func (c *departmentController) DeleteDepartment(ctx context.Context, req *basic.DepartmentDeleteReq) (res *basic.DepartmentDeleteRes, err error) {
+	in := &model.DepartmentInput{
+		IdList: req.IdList,
+	}
+	result, err2 := service.Department().DeleteDepartment(ctx, *in)
+	res = &basic.DepartmentDeleteRes{
+		Result: result,
+	}
+	if err2 != nil {
+		return nil, err2
+	}
+	return res, nil
 }

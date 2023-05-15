@@ -19,10 +19,19 @@ type Department struct {
 }
 
 type DepartmentCreateReq struct {
-	g.Meta     `path:"/department/create" method:"post" tags:"新增部门1" summary:"新增部门11"`
+	g.Meta         `path:"/department/create" method:"post" tags:"新增部门1" summary:"新增部门11"`
 	DepartmentName string `json:"departmentName" dc:"departmentName"`
 }
 
 type DepartmentCreateRes struct {
+	Result bool `json:"result" dc:"result"`
+}
+
+type DepartmentDeleteReq struct {
+	g.Meta `path:"/department/delete" method:"post" tags:"根据ID删除部门" summary:"根据ID删除部门，支持批量"`
+	IdList []int `json:"IdList"             description:"部门ID"`
+}
+
+type DepartmentDeleteRes struct {
 	Result bool `json:"result" dc:"result"`
 }
